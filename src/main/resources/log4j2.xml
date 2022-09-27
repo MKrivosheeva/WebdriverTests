@@ -1,0 +1,15 @@
+<Configuration monitorInterval="30">
+    <Appenders>
+         <File name="MyFile" fileName="logs.log">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+
+    <Loggers>
+        <Root level="ALL">
+             <AppenderRef ref="MyFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
