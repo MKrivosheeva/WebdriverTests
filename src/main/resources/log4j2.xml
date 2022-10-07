@@ -14,7 +14,7 @@
                 <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
             </PatternLayout>
             <Policies>
-                <SizeBasedTriggeringPolicy size="300 KB" />
+                <SizeBasedTriggeringPolicy size="200 KB" />
             </Policies>
             <DefaultRolloverStrategy max="1" />
         </RollingFile>

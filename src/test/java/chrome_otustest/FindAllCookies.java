@@ -13,10 +13,10 @@ public class FindAllCookies extends CommonActions {
 
     @Test
     public void findAllCookiesTest() {
-        By signInButton = By.xpath("//*[@class='header2__auth.js-open-modal']");//css, не использовать ссылку на классы через пробел
-        By loginField = By.xpath("//*[contains(@class,'email-input')][contains(@type,'text')]");
-        By pswdField = By.xpath("//*[contains(@class,'psw-input')][contains(@type,'password')]");
-        By enterButton = By.cssSelector("//div[2]/form/div[4]/button");//везде убрать индексацию
+        By signInButton = By.cssSelector("button[data-modal-id=new-log-reg]");
+        By loginField = By.cssSelector("input[placeholder='Электронная почта'][type='text']");
+        By pswdField = By.cssSelector("input[type=password]");
+        By enterButton = By.cssSelector("button[class$='new-button_md'][type='submit']");
 
         driver.get(URL);
         driver.manage().window().fullscreen();
