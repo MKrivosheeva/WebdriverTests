@@ -13,11 +13,11 @@ import static java.time.Duration.ofSeconds;
 public class ModalWindowTest extends CommonActions {
     private final String URL = "https://demo.w3layouts.com/demos_new/template_demo/03-10-2020/photoflash-liberty-demo_Free/685659620/web/index.html?_ga=2.181802926.889871791.1632394818-2083132868.1632394818";
 
-    @Test
+    @Test //сначала проверить, что оно не открыто
     public void modalWindowTest() {
-        By image = By.xpath("//div/ul[2]/li[1]/span/a/div[1]");
-        By modalWindowImage = By.xpath("//section[2]/div/ul[2]/li[1]/span/a/img");
-
+        By image = By.xpath("//div/ul[2]/li[1]/span/a/div[1]"); //исправить локаторы - убрать индексацию
+        By modalWindowImage = By.xpath("//section[2]/div/ul[2]/li[1]/span/a/img");//лучше не использовать хpath
+//css селектор вместо него
         driver.get(URL);
         driver.manage().window().maximize();
         WebElement mainPageImage = driver.findElement(image);

@@ -1,15 +1,27 @@
 <Configuration monitorInterval="30">
     <Appenders>
-         <File name="MyFile" fileName="logs.log">
+      <!--   <File name="MyFile" fileName="logs.log">
             <PatternLayout>
                 <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
             </PatternLayout>
-        </File>
+        </File> -->
+        <RollingFile
+                name="rollingFile"
+                fileName="logs.log"
+                filePattern="logs.%i.log.gz"
+                ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="300 KB" />
+            </Policies>
+            <DefaultRolloverStrategy max="1" />
+        </RollingFile>
     </Appenders>
-
     <Loggers>
         <Root level="ALL">
-             <AppenderRef ref="MyFile"/>
+             <AppenderRef ref="rollingFile"/>
         </Root>
     </Loggers>
 </Configuration>
