@@ -25,6 +25,5 @@ public class FindAllCookies extends CommonActions {
         driver.findElement(pswdField).sendKeys(loginPassword.password());
         driver.findElement(enterButton).click();
         logger.info("Куки с сайта" + driver.manage().getCookies());
-        driver.manage().deleteAllCookies();
     }
 }
