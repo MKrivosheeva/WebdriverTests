@@ -4,24 +4,24 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import java.time.Duration;
 
+public abstract class HeadlessStartUp {
 
-public abstract class CommonActions {
     protected static WebDriver driver;
     protected static org.apache.logging.log4j.Logger logger = LogManager.getLogger(CommonActions.class);
 
     @BeforeAll
-    public static void startUp(){
+    public static void headlessStartUp() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("headless");
+        driver = new ChromeDriver(options);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         logger.info("Драйвер поднят");
 
     }
@@ -30,17 +30,11 @@ public abstract class CommonActions {
     public static void end(){
         if (driver!=null)
             driver.quit();
-     }
-
-    protected boolean waitForCondition(ExpectedCondition condition) {
-        try {
-            WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(5));
-            webDriverWait.until(condition);
-            return true;
-        } catch(TimeoutException ignoring) {
-            return false;
-        }
     }
-
-
 }
+
+
+
+
+
+
