@@ -2,8 +2,9 @@ package common_actions;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
-import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -15,9 +16,14 @@ public abstract class HeadlessStartUp {
     protected static WebDriver driver;
     protected static org.apache.logging.log4j.Logger logger = LogManager.getLogger(CommonActions.class);
 
+
     @BeforeAll
-    public static void headlessStartUp() {
+    public static void load() {
         WebDriverManager.chromedriver().setup();
+    }
+
+    @BeforeEach
+    public void headlessStartUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         driver = new ChromeDriver(options);
@@ -26,8 +32,8 @@ public abstract class HeadlessStartUp {
 
     }
 
-    @AfterAll
-    public static void end(){
+    @AfterEach
+    public void end(){
         if (driver!=null)
             driver.quit();
     }

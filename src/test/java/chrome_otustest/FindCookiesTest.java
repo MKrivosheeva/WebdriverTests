@@ -6,7 +6,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 
-public class FindAllCookies extends CommonActions {
+public class FindCookiesTest extends CommonActions {
     private final String URL = "https://otus.ru";
     private IGetCredentials loginPassword = ConfigFactory.create(IGetCredentials.class);
 
