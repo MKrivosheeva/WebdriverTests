@@ -26,6 +26,11 @@ public abstract class HeadlessStartUp {
     public void headlessStartUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
+        options.addArguments("--headless");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--window-size=1920,1200");
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
         logger.info("Драйвер поднят");
